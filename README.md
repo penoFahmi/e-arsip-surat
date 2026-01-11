@@ -72,7 +72,7 @@ Pastikan environment Anda sudah memenuhi syarat: **PHP >= 8.1**, **Composer**, d
 
 ### 1) Clone Repository
 ```bash
-git clone [https://github.com/penoFahmi/e-arsip-surat.git](https://github.com/penoFahmi/e-arsip-surat.git)
+git clone https://github.com/penoFahmi/e-arsip-surat.git
 cd e-arsip-surat
 ```
 
