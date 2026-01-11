@@ -139,16 +139,6 @@
 
     <table class="data-table">
         <thead>
-            {{-- <tr>
-                <th width="5%">No.</th>
-                <th width="10%">No. Agenda</th>
-                <th width="15%">No. Surat</th>
-                <th width="20%">Asal Surat</th>
-                <th width="15%">Tanggal Surat</th>
-                <th width="20%">Perihal</th>
-                <th width="15%">Keterangan</th>
-                <th width="15%">Keterangan</th>
-            </tr> --}}
             <tr>
                 <th width="5%">No.</th>
                 <th width="10%">{{ __('model.letter.agenda_number') }}</th>

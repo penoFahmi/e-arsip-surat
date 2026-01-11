@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Laporan Agenda Surat - {{ config('app.name') }}</title>
+    <title>Cetak Agenda Surat Keluar - {{ config('app.name') }}</title>
     <style>
         /* Pengaturan Kertas A4 Landscape */
         @page {

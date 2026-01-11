@@ -11,8 +11,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
-    <title>{{ config('app.name') }} - E-Arsip</title>
-    <meta name="description" content="Sistem Arsip Digital BKAD"/>
+    <title>{{ config('app.name') }}</title>
+    <meta name="description" content="Sistem Arsip Digital Surat"/>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('logo-black.png') }}"/>
 
@@ -90,7 +90,8 @@
                 <div class="container-xxl flex-grow-1 container-p-y">
                     @yield('content')
                 </div>
-                @include('components.footer')
+                {{-- @include('components.footer') --}}
+                <x-footer />
                 <div class="content-backdrop fade"></div>
             </div>
             </div>
