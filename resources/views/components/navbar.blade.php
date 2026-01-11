@@ -3,14 +3,14 @@
         box-shadow: 0 0.375rem 1rem 0 rgba(161, 172, 184, 0.15) !important;
     }
     .search-input-wrapper {
-        background-color: #f5f5f9; /* Abu-abu muda */
+        background-color: #f5f5f9; 
         border-radius: 20px;
         padding: 5px 15px;
         transition: all 0.3s ease;
     }
     .search-input-wrapper:focus-within {
         background-color: #fff;
-        box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.2); /* Shadow Biru saat ngetik */
+        box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.2);
     }
     .date-display {
         font-weight: 600;

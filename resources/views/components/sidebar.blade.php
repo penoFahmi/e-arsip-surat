@@ -1,13 +1,13 @@
 <style>
     /* Latar belakang Sidebar */
     .bg-menu-theme {
-        background-color: #0d2b5e !important; /* Deep Navy */
+        background-color: #0d2b5e !important;
         color: #e4e6eb !important;
     }
 
     /* Warna Teks Menu Normal */
     .bg-menu-theme .menu-link {
-        color: #b0c4de !important; /* Light Steel Blue */
+        color: #b0c4de !important;
     }
 
     /* Warna Icon Menu Normal */
@@ -38,20 +38,18 @@
     }
 
     .bg-menu-theme .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle) {
-        background-color: transparent !important; /* Hapus bg box di submenu */
+        background-color: transparent !important;
         color: #ffffff !important;
         position: relative;
     }
 
-    /* Indikator aktif bulat kecil di submenu */
     .bg-menu-theme .menu-sub > .menu-item.active > .menu-link:before {
         background-color: #ffffff !important;
         box-shadow: 0 0 5px rgba(255,255,255,0.8);
     }
 
-    /* Header Menu (Kategori) */
     .bg-menu-theme .menu-header-text {
-        color: #6c8caf !important; /* Warna text header agak redup */
+        color: #6c8caf !important;
         font-weight: 700;
         letter-spacing: 1px;
     }
@@ -68,7 +66,7 @@
         <a href="{{ route('home') }}" class="app-brand-link">
             <img src="{{ asset('logo-black.png') }}" alt="{{ config('app.name') }}" width="35" style="invert(1);">
             <span class="app-brand-text demo menu-text fw-bolder ms-2" style="color: #ffffff; text-transform: uppercase; font-size: 1.2rem;">
-                BKAD ARSIP
+                E-Arsip Surat
             </span>
         </a>
 

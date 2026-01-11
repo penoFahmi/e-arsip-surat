@@ -24,7 +24,7 @@
         .header-table {
             width: 100%;
             margin-bottom: 10px;
-            border-bottom: 3px double black; /* Garis Ganda Khas Surat Dinas */
+            border-bottom: 3px double black;
             padding-bottom: 10px;
         }
         .header-logo {
@@ -82,11 +82,9 @@
             text-align: left;
         }
 
-        /* Helper untuk Text Alignment */
         .text-center { text-align: center !important; }
         .text-right { text-align: right !important; }
 
-        /* Area Tanda Tangan */
         .signature-section {
             margin-top: 40px;
             width: 100%;
