@@ -19,8 +19,7 @@
 <p align="center">
   <a href="#-fitur-unggulan">Fitur</a> •
   <a href="#-teknologi">Teknologi</a> •
-  <a href="#-instalasi">Instalasi</a> •
-  <a href="#-preview">Preview</a>
+  <a href="#-instalasi">Instalasi</a> 
 </p>
 
 ---
@@ -37,7 +36,7 @@ Dengan sistem ini, proses pencarian arsip lama, pelacakan disposisi surat, hingg
 
 Project ini dibangun menggunakan stack teknologi modern untuk performa dan keamanan yang optimal:
 
--   **Framework:** [Laravel 10](https://laravel.com)
+-   **Framework:** [Laravel](https://laravel.com)
 -   **Database:** MySQL
 -   **Frontend:** Blade Templating
 -   **UI Kit:** Bootstrap 5 (Sneat Admin Template)
@@ -67,24 +66,15 @@ Project ini dibangun menggunakan stack teknologi modern untuk performa dan keama
 
 ---
 
-## 📸 Preview
-
-*(Tambahkan screenshot aplikasi di sini agar lebih menarik)*
-
-| Dashboard Statistik | Manajemen Surat |
-| :---: | :---: |
-| <img src="https://via.placeholder.com/600x300?text=Dashboard+Preview" alt="Dashboard" width="100%"> | <img src="https://via.placeholder.com/600x300?text=Surat+Preview" alt="Surat Masuk" width="100%"> |
-
----
-
 ## ⚡ Instalasi (Setup Manual)
 
 Pastikan environment Anda sudah memenuhi syarat: **PHP >= 8.1**, **Composer**, dan **MySQL**.
 
-### 1. Clone Repository
+### 1) Clone Repository
 ```bash
 git clone [https://github.com/penoFahmi/e-arsip-surat.git](https://github.com/penoFahmi/e-arsip-surat.git)
 cd e-arsip-surat
+```
 
 ### 2) Install Dependency
 
