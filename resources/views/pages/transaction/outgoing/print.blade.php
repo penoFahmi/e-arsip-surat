@@ -71,10 +71,10 @@
         table.data-table th, table.data-table td {
             border: 1px solid black;
             padding: 6px 8px;
-            vertical-align: top; /* Teks selalu di atas jika baris tinggi */
+            vertical-align: top;
         }
         table.data-table th {
-            background-color: #f0f0f0; /* Abu-abu muda agar header jelas saat dicetak */
+            background-color: #f0f0f0;
             text-align: center;
             font-weight: bold;
         }
@@ -90,12 +90,12 @@
         .signature-section {
             margin-top: 40px;
             width: 100%;
-            display: flex; /* Gunakan Flexbox untuk layout tanda tangan */
-            justify-content: flex-end; /* Geser ke kanan */
+            display: flex;
+            justify-content: flex-end;
         }
         .signature-box {
             width: 300px;
-            text-align: center;
+            text-align: left;
         }
 
         /* Sembunyikan elemen saat print jika ada tombol print manual */

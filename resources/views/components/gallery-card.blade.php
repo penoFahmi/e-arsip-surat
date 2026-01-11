@@ -90,6 +90,14 @@
             @endif
         </small>
 
+        <small class="text-muted d-block mb-3">
+            @if($letter->type == 'incoming')
+                <a class="fw-bold text-primary">{{ $letter->from }}</a>
+            @else
+                <a class="fw-bold text-primary">{{ $letter->to }}</a>
+            @endif
+        </small>
+
         <div class="d-grid gap-2">
             <a href="{{ $path }}" download class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center">
                 <i class="bx bx-download me-1"></i> {{ __('menu.general.download') }}

@@ -23,7 +23,7 @@
         /* Kop Surat */
         .header-table {
             width: 100%;
-            border-bottom: 3px double black; /* Garis Ganda */
+            border-bottom: 3px double black;
             margin-bottom: 15px;
             padding-bottom: 10px;
         }
@@ -90,7 +90,7 @@
         }
         .signature-box {
             width: 300px;
-            text-align: center;
+            text-align: left;
         }
 
         .text-center { text-align: center; }
@@ -139,13 +139,25 @@
 
     <table class="data-table">
         <thead>
-            <tr>
+            {{-- <tr>
                 <th width="5%">No.</th>
                 <th width="10%">No. Agenda</th>
                 <th width="15%">No. Surat</th>
-                <th width="20%">Asal Surat</th> <th width="15%">Tanggal Surat</th>
+                <th width="20%">Asal Surat</th>
+                <th width="15%">Tanggal Surat</th>
                 <th width="20%">Perihal</th>
                 <th width="15%">Keterangan</th>
+                <th width="15%">Keterangan</th>
+            </tr> --}}
+            <tr>
+                <th width="5%">No.</th>
+                <th width="10%">{{ __('model.letter.agenda_number') }}</th>
+                <th width="15%">{{ __('model.letter.reference_number') }}</th>
+                <th width="20%">{{ __('model.letter.from') }}</th>
+                <th width="10%">{{ __('model.letter.received_date') }}</th>
+                <th width="15%">{{ __('model.letter.description') }}</th>
+                <th width="15%">{{ __('model.letter.note') }}</th>
+                <th width="15%">{{ __('model.letter.dispose') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -157,10 +169,21 @@
                     <td>{{ $letter->from }}</td> <td class="text-center">{{ $letter->formatted_letter_date }}</td>
                     <td>{{ $letter->description }}</td>
                     <td>{{ $letter->note }}</td>
+                    <td>
+                        @if($letter->dispositions->count() > 0)
+                            <ul style="padding-left: 15px; margin: 0;">
+                                @foreach($letter->dispositions as $disposition)
+                                    <li>{{ $disposition->to }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            -
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" class="text-center">Tidak ada data surat masuk pada periode ini.</td>
+                    <td colspan="8" class="text-center">Tidak ada data surat masuk pada periode ini.</td>
                 </tr>
             @endforelse
         </tbody>
