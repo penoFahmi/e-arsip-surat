@@ -1,8 +1,8 @@
 <style>
     .disposition-card {
         border: 1px solid #e1e4e8;
-        border-left: 4px solid #696cff; /* Default Ungu Sneat, bisa diganti logic */
-        background-color: #fdfdfd; /* Sedikit berbeda dari putih murni */
+        border-left: 4px solid #696cff;
+        background-color: #fdfdfd;
         border-radius: 8px;
         transition: all 0.2s;
     }

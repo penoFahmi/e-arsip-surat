@@ -5,7 +5,7 @@
         background: #fff;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        overflow: hidden; /* Penting untuk watermark */
+        overflow: hidden;
         position: relative;
         height: 100%;
     }

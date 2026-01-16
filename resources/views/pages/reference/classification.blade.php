@@ -45,7 +45,7 @@
             </form>
         </div>
 
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive">
             <table class="table table-hover">
                 <thead class="table-light">
                     <tr>
@@ -71,30 +71,21 @@
                                 {{ $classification->description }}
                             </td>
                             <td class="text-end">
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <button class="dropdown-item btn-edit"
-                                            data-id="{{ $classification->id }}"
-                                            data-code="{{ $classification->code }}"
-                                            data-type="{{ $classification->type }}"
-                                            data-description="{{ $classification->description }}"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#editModal">
-                                            <i class="bx bx-edit-alt me-1"></i> {{ __('menu.general.edit') }}
-                                        </button>
-
-                                        <form action="{{ route('reference.classification.destroy', $classification) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="dropdown-item text-danger btn-delete">
-                                                <i class="bx bx-trash me-1"></i> {{ __('menu.general.delete') }}
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <button class="btn btn-info btn-sm btn-edit"
+                                        data-id="{{ $classification->id }}"
+                                        data-code="{{ $classification->code }}"
+                                        data-type="{{ $classification->type }}"
+                                        data-description="{{ $classification->description }}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editModal">
+                                    {{ __('menu.general.edit') }}
+                                </button>
+                                <form action="{{ route('reference.classification.destroy', $classification) }}" class="d-inline" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm btn-delete"
+                                            type="button">{{ __('menu.general.delete') }}</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -140,12 +140,11 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th width="5%">No.</th>
                 <th width="10%">{{ __('model.letter.agenda_number') }}</th>
                 <th width="15%">{{ __('model.letter.reference_number') }}</th>
                 <th width="20%">{{ __('model.letter.from') }}</th>
                 <th width="10%">{{ __('model.letter.received_date') }}</th>
-                <th width="15%">{{ __('model.letter.description') }}</th>
+                <th width="20%">{{ __('model.letter.description') }}</th>
                 <th width="15%">{{ __('model.letter.note') }}</th>
                 <th width="15%">{{ __('model.letter.dispose') }}</th>
             </tr>
@@ -153,7 +152,6 @@
         <tbody>
             @forelse($data as $index => $letter)
                 <tr>
-                    <td class="text-center">{{ $index + 1 }}</td>
                     <td class="text-center">{{ $letter->agenda_number }}</td>
                     <td>{{ $letter->reference_number }}</td>
                     <td>{{ $letter->from }}</td> <td class="text-center">{{ $letter->formatted_letter_date }}</td>

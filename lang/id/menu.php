@@ -40,6 +40,7 @@ return [
         'delete' => 'Hapus',
         'print' => 'Cetak',
         'upload' => 'Unggah',
+        'back' => 'Kembali',
         'download' => 'Unduh',
         'save' => 'Simpan',
         'update' => 'Perbarui',

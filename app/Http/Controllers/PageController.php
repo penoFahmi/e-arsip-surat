@@ -38,6 +38,11 @@ class PageController extends Controller
         $yesterdayDispositionLetter = Disposition::yesterday()->count();
         $yesterdayLetterTransaction = $yesterdayIncomingLetter + $yesterdayOutgoingLetter + $yesterdayDispositionLetter;
 
+        $weekIncomingLetter = Letter::incoming()->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
+        $weekOutgoingLetter = Letter::outgoing()->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
+        $weekDispositionLetter = Disposition::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
+        $weekLetterTransaction = $weekIncomingLetter + $weekOutgoingLetter + $weekDispositionLetter;
+
         return view('pages.dashboard', [
             'greeting' => GeneralHelper::greeting(),
             'currentDate' => Carbon::now()->isoFormat('dddd, D MMMM YYYY'),
@@ -50,6 +55,10 @@ class PageController extends Controller
             'percentageOutgoingLetter' => GeneralHelper::calculateChangePercentage($yesterdayOutgoingLetter, $todayOutgoingLetter),
             'percentageDispositionLetter' => GeneralHelper::calculateChangePercentage($yesterdayDispositionLetter, $todayDispositionLetter),
             'percentageLetterTransaction' => GeneralHelper::calculateChangePercentage($yesterdayLetterTransaction, $todayLetterTransaction),
+            'weekIncomingLetter' => $weekIncomingLetter,
+            'weekOutgoingLetter' => $weekOutgoingLetter,
+            'weekDispositionLetter' => $weekDispositionLetter,
+            'weekLetterTransaction' => $weekLetterTransaction,
         ]);
     }
 
@@ -73,14 +82,14 @@ class PageController extends Controller
         try {
             $newProfile = $request->validated();
             if ($request->hasFile('profile_picture')) {
-//               DELETE OLD PICTURE
+                //               DELETE OLD PICTURE
                 $oldPicture = auth()->user()->profile_picture;
                 if (str_contains($oldPicture, '/storage/avatars/')) {
                     $url = parse_url($oldPicture, PHP_URL_PATH);
                     Storage::delete(str_replace('/storage', 'public', $url));
                 }
 
-//                UPLOAD NEW PICTURE
+                //                UPLOAD NEW PICTURE
                 $filename = time() .
                     '-' . $request->file('profile_picture')->getFilename() .
                     '.' . $request->file('profile_picture')->getClientOriginalExtension();

@@ -4,11 +4,13 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         transition: all 0.3s ease;
         border-radius: 10px;
-        overflow: hidden;
+        overflow: visible;
     }
     .letter-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 8px 15px rgba(13, 71, 161, 0.1);
+        z-index: 10;
+        position: relative;
     }
 
     /* Indikator Garis Kiri (Biru = Masuk, Oranye = Keluar) */

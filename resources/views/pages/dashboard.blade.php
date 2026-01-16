@@ -7,33 +7,64 @@
             background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%);
             border: 1px solid #e1e4e8;
         }
+        .nav-pills .nav-link {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+        }
     </style>
 @endpush
 
 @push('script')
     <script src="{{asset('sneat/vendor/libs/apex-charts/apexcharts.js')}}"></script>
     <script>
-        // Konfigurasi Grafik
+        const chartData = {
+            today: [
+                {{ $todayIncomingLetter ?? 0 }},
+                {{ $todayOutgoingLetter ?? 0 }},
+                {{ $todayDispositionLetter ?? 0 }}
+            ],
+            week: [
+                {{ $weekIncomingLetter ?? 0 }},
+                {{ $weekOutgoingLetter ?? 0 }},
+                {{ $weekDispositionLetter ?? 0 }}
+            ],
+            month: [
+                {{ $monthIncomingLetter ?? 0 }},
+                {{ $monthOutgoingLetter ?? 0 }},
+                {{ $monthDispositionLetter ?? 0 }}
+            ],
+            year: [
+                {{ $yearIncomingLetter ?? 0 }},
+                {{ $yearOutgoingLetter ?? 0 }},
+                {{ $yearDispositionLetter ?? 0 }}
+            ]
+        };
+
         const options = {
             chart: {
                 height: 300,
                 type: 'bar',
                 toolbar: { show: false },
-                fontFamily: 'Public Sans, sans-serif'
+                fontFamily: 'Public Sans, sans-serif',
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800,
+                }
             },
-            colors: ['#0d47a1', '#ffab00', '#00bcd4'], // Biru, Kuning, Cyan
+            colors: ['#0d47a1', '#ffab00', '#00bcd4'],
             plotOptions: {
                 bar: {
-                    columnWidth: '40%',
+                    columnWidth: '45%',
                     distributed: true,
-                    borderRadius: 8,
+                    borderRadius: 6,
                 }
             },
             dataLabels: { enabled: false },
             legend: { show: false },
             series: [{
                 name: 'Jumlah Surat',
-                data: [{{ $todayIncomingLetter }}, {{ $todayOutgoingLetter }}, {{ $todayDispositionLetter }}]
+                data: chartData.today
             }],
             xaxis: {
                 categories: [
@@ -43,15 +74,40 @@
                 ],
                 axisBorder: { show: false },
                 axisTicks: { show: false },
+                labels: {
+                    style: {
+                        fontSize: '13px',
+                        colors: '#566a7f'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: '#566a7f'
+                    }
+                }
             },
             grid: {
                 borderColor: '#f1f1f1',
                 strokeDashArray: 4,
+                padding: { top: 0, right: 0, bottom: 0, left: 10 }
             }
-        }
+        };
 
-        const chart = new ApexCharts(document.querySelector("#today-graphic"), options);
+        const chart = new ApexCharts(document.querySelector("#transaction-graphic"), options);
         chart.render();
+
+
+        function updateChart(filterType, element) {
+            chart.updateSeries([{
+                data: chartData[filterType]
+            }]);
+
+            const buttons = document.querySelectorAll('.nav-pills .nav-link');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
     </script>
 @endpush
 
@@ -82,27 +138,58 @@
             </div>
 
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5 class="card-title mb-0 fw-bold">{{ __('dashboard.today_graphic') }}</h5>
-                        <span class="badge bg-label-warning rounded-pill">{{ __('dashboard.today') }}</span>
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                    <div class="card-title mb-0">
+                        <h5 class="m-0 me-2 fw-bold">Statistik Surat</h5>
+                        <small class="text-muted">Grafik jumlah transaksi surat</small>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <ul class="nav nav-pills p-1 rounded-pill bg-label-secondary" role="tablist">
+                            <li class="nav-item">
+                                <button type="button" class="nav-link active rounded-pill" onclick="updateChart('today', this)">
+                                    Hari
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link rounded-pill" onclick="updateChart('week', this)">
+                                    Minggu
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link rounded-pill" onclick="updateChart('month', this)">
+                                    Bulan
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link rounded-pill" onclick="updateChart('year', this)">
+                                    Tahun
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="card-body">
+
+                <div class="card-body pt-3">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-column align-items-center gap-1">
-                            <h2 class="mb-2">{{ $todayLetterTransaction }}</h2>
-                            <span>Total Transaksi</span>
+                        <div class="d-flex flex-column align-items-start gap-1">
+                            <h2 class="mb-0 fw-bold">{{ $todayLetterTransaction }}</h2>
+                            <span class="text-muted">Total Transaksi (Harian)</span>
                         </div>
                         <div class="mt-sm-auto">
                             @if($percentageLetterTransaction > 0)
-                                <small class="text-success fw-semibold"><i class="bx bx-chevron-up"></i> {{ $percentageLetterTransaction }}%</small>
+                                <span class="badge bg-label-success rounded-pill">
+                                    <i class="bx bx-trending-up"></i> +{{ $percentageLetterTransaction }}%
+                                </span>
                             @elseif($percentageLetterTransaction < 0)
-                                <small class="text-danger fw-semibold"><i class="bx bx-chevron-down"></i> {{ $percentageLetterTransaction }}%</small>
+                                <span class="badge bg-label-danger rounded-pill">
+                                    <i class="bx bx-trending-down"></i> {{ $percentageLetterTransaction }}%
+                                </span>
                             @endif
                         </div>
                     </div>
-                    <div id="today-graphic"></div>
+
+                    <div id="transaction-graphic"></div>
                 </div>
             </div>
         </div>
