@@ -125,13 +125,13 @@
                                 <span class="badge bg-label-primary p-2 rounded me-2">
                                     <i class="bx bx-calendar-check"></i>
                                 </span>
-                                <small class="fw-semibold">*) {{ __('dashboard.today_report') }}</small>
+                                <small class="fw-semibold">{{ __('dashboard.today_report') }}</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
-                            <img src="{{asset('sneat/img/man-with-laptop-light.png')}}" height="140" alt="User">
+                            <img src="{{asset('sneat/img/man-surat.png')}}" height="140" alt="User">
                         </div>
                     </div>
                 </div>

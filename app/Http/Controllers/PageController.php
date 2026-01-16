@@ -43,6 +43,14 @@ class PageController extends Controller
         $weekDispositionLetter = Disposition::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count();
         $weekLetterTransaction = $weekIncomingLetter + $weekOutgoingLetter + $weekDispositionLetter;
 
+        $monthIncomingLetter = Letter::incoming()->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year)->count();
+        $monthOutgoingLetter = Letter::outgoing()->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year)->count();
+        $monthDispositionLetter = Disposition::whereMonth('created_at', now()->month)->whereYear('created_at', now()->year)->count();
+
+        $yearIncomingLetter = Letter::incoming()->whereYear('created_at', now()->year)->count();
+        $yearOutgoingLetter = Letter::outgoing()->whereYear('created_at', now()->year)->count();
+        $yearDispositionLetter = Disposition::whereYear('created_at', now()->year)->count();
+
         return view('pages.dashboard', [
             'greeting' => GeneralHelper::greeting(),
             'currentDate' => Carbon::now()->isoFormat('dddd, D MMMM YYYY'),
@@ -50,15 +58,22 @@ class PageController extends Controller
             'todayOutgoingLetter' => $todayOutgoingLetter,
             'todayDispositionLetter' => $todayDispositionLetter,
             'todayLetterTransaction' => $todayLetterTransaction,
+            'weekIncomingLetter' => $weekIncomingLetter,
+            'weekOutgoingLetter' => $weekOutgoingLetter,
+            'weekDispositionLetter' => $weekDispositionLetter,
+            'weekLetterTransaction' => $weekLetterTransaction,
+            'monthIncomingLetter' => $monthIncomingLetter,
+            'monthOutgoingLetter' => $monthOutgoingLetter,
+            'monthDispositionLetter' => $monthDispositionLetter,
+            'yearIncomingLetter' => $yearIncomingLetter,
+            'yearOutgoingLetter' => $yearOutgoingLetter,
+            'yearDispositionLetter' => $yearDispositionLetter,
             'activeUser' => User::active()->count(),
             'percentageIncomingLetter' => GeneralHelper::calculateChangePercentage($yesterdayIncomingLetter, $todayIncomingLetter),
             'percentageOutgoingLetter' => GeneralHelper::calculateChangePercentage($yesterdayOutgoingLetter, $todayOutgoingLetter),
             'percentageDispositionLetter' => GeneralHelper::calculateChangePercentage($yesterdayDispositionLetter, $todayDispositionLetter),
             'percentageLetterTransaction' => GeneralHelper::calculateChangePercentage($yesterdayLetterTransaction, $todayLetterTransaction),
-            'weekIncomingLetter' => $weekIncomingLetter,
-            'weekOutgoingLetter' => $weekOutgoingLetter,
-            'weekDispositionLetter' => $weekDispositionLetter,
-            'weekLetterTransaction' => $weekLetterTransaction,
+
         ]);
     }
 
