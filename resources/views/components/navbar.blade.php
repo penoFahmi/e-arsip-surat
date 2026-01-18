@@ -3,7 +3,7 @@
         box-shadow: 0 0.375rem 1rem 0 rgba(161, 172, 184, 0.15) !important;
     }
     .search-input-wrapper {
-        background-color: #f5f5f9; 
+        background-color: #f5f5f9;
         border-radius: 20px;
         padding: 5px 15px;
         transition: all 0.3s ease;
@@ -55,7 +55,6 @@
             </div>
         </form>
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
@@ -113,6 +112,6 @@
                     </li>
                 </ul>
             </li>
-            </ul>
+        </ul>
     </div>
 </nav>
