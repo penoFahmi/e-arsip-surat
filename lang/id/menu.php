@@ -2,15 +2,15 @@
 
 return [
     'home' => 'Beranda',
-    'users' => 'Kelola Pengguna',
+    'users' => 'Pengguna',
     'transaction' => [
-        'menu' => 'Transaksi Surat',
+        'menu' => 'Surat',
         'incoming_letter' => 'Surat Masuk',
         'outgoing_letter' => 'Surat Keluar',
         'disposition_letter' => 'Surat Disposisi',
     ],
     'agenda' => [
-        'menu' => 'Buku Agenda',
+        'menu' => 'Daftar Agenda',
         'incoming_letter' => 'Surat Masuk',
         'outgoing_letter' => 'Surat Keluar',
         'disposition_letter' => 'Surat Disposisi',
@@ -19,7 +19,7 @@ return [
         'end_date' => 'Sampai Tanggal',
     ],
     'gallery' => [
-        'menu' => 'Galeri Surat',
+        'menu' => 'Galeri',
         'incoming_letter' => 'Surat Masuk',
         'outgoing_letter' => 'Surat Keluar',
         'disposition_letter' => 'Surat Disposisi',
